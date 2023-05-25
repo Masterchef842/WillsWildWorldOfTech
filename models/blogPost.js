@@ -15,11 +15,11 @@ blogPost.init(
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
-                len: [1, 40]
+                len: [1, 100]
             }
         },
         content: {
-            type: DataTypes.STRING,
+            type: DataTypes.TEXT,
             allowNull: false,
         },
         date_created: {
