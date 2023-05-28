@@ -32,7 +32,7 @@ blogPost.init(
             references: {
                 model: 'user',
                 key: 'id',
-            }
+            },
         },
         likes: {
             type: DataTypes.INTEGER,
