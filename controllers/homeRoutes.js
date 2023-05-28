@@ -7,7 +7,14 @@ const Comment = require('../models/Comment');
 router.get('/', async (req, res) => {     //homepage
   try {
     
-    const allBlogs = await blogPost.findAll({include: User})
+    const allBlogs = await blogPost.findAll({
+      include : [
+        {
+          model: User,
+          attributes: ['name'],
+        },
+      ],
+    })
     
     // Serialize data so the template can read it
     const blogPosts = allBlogs.map((blog) => blog.get({ plain: true }));
