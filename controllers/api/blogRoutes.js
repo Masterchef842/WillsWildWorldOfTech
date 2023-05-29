@@ -9,7 +9,19 @@ router.post('/', withAuth, async (req, res) => {
       user_id: req.session.user_id,
     });
 
-    res.status(200).json(newBlogPost);
+    res.redirect('/dashboard');
+  } catch (err) {
+    res.status(400).json(err);
+  }
+});
+router.put('/edit', withAuth, async (req, res) => {
+  try {
+    const updateBlogPost = await blogPost.findByPk(req.body.id);
+    updateBlogPost.update({
+      title:req.body.title,
+      content: req.body.content
+    })
+    res.status(200).json(updateBlogPost);
   } catch (err) {
     res.status(400).json(err);
   }

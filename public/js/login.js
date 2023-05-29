@@ -18,7 +18,7 @@ const sendLogin = async (event) => {
       });
   
       if (response.ok) {
-        document.location.replace('/profile');
+        document.location.replace('/');
       } else {
         alert("Please enter a valid username and  password...")
       }
@@ -47,7 +47,7 @@ const sendLogin = async (event) => {
       });
   
       if (response.ok) {
-        document.location.replace('/profile');
+        document.location.replace('/');
       } else {
         alert("Ensure you've entered a Username, an Email, and matching Passwords...")
       }

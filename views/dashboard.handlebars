@@ -1,0 +1,63 @@
+<div>
+    <h2>Howdy there {{username}}</h2>
+
+
+    <div>
+        <div>
+            <button type="button" id="newPost">New Post</button>
+            <div id="postMaker" style="display : none;">
+                <form action="/api/blogs/" method="post">
+                    <input type="text" id="postTitle" name="title" placeholder="enter Post Title"><br>
+                    <textarea id="newBlogText" name="content" placeholder="your post here rows" rows="10"
+                        cols="50"></textarea>
+                    <br>
+                    <input type="submit" value="submit">
+                </form>
+            </div>
+        </div>
+        <h3>All posts:</h3>
+        {{#each blogPosts as |blog|}}
+        <div>
+            <h2> <a href="/blogs/{{blog.id}}">{{blog.title}}</a></h2>
+            <h3>by: You on {{blog.date_created}}</h3>
+            <p>
+                {{blog.content}}
+            </p>
+            <div>
+                <div style="display : none;">
+                    <form>
+                        <input type="text" name="title" placeholder="enter Post Title" value="{{blog.title}}"><br>
+                        <textarea name="content" placeholder="your post here rows" rows="10"
+                            cols="50">{{blog.content}}</textarea>
+                        <br>
+                        <input type="submit" value="submit">
+                    </form>
+                </div>
+                <button class="editPost" type="button" value="{{blog.id}}">edit</button>
+                <button class="deletePost" type="button" value="{{blog.id}}">delete</button>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+    <div>
+        <h3>All Comments:</h3>
+
+        <div id="comments">
+            <ul>
+                {{#each commentList as |com| }}
+                <li>
+                    <h4>{{username}}<h4>
+                            <p>
+                                {{com.content}}
+                            </p>
+                            <span>{{com.date_created}} likes: <span
+                                    id=>{{com.likes}}</span>{{com.id}}<span></span></span>
+                            <a>edit</a>
+                </li>
+                {{/each}}
+            </ul>
+        </div>
+    </div>
+
+</div>
+<script src="/js/dashboard.js"></script>

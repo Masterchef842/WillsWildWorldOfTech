@@ -1,4 +1,40 @@
 <div>
     <h2>{{title}}</h2>
-    <h3>by: <a href="/users/{{user_id}}">{{user.username}}</a></h3>
+    <h3>by: <a href="/users/{{user_id}}">{{user.username}}</a> on {{date_created}}</h3>
+    <div>
+        <p>
+            {{content}}
+        </p>
+    </div>
+    <div id="commentSection">
+        <h3>Comments:</h3>
+        {{#if logged_in}}
+        <form id="newComment">
+
+            <input type="text" id="newCommentText" placeholder="What did you think?">
+            <input type="submit" value="submit">
+        </form>
+        {{/if}}
+        <div id="comments">
+            <ul>
+                {{#each comList as |com| }}
+                <li>
+                    <h4>{{com.user.username}}<h4>
+                            <p>
+                                {{com.content}}
+                            </p>
+                            <span>{{com.date_created}} likes: <span id=>{{com.likes}}</span>{{com.id}}<span></span></span>
+                            <button type="button" class="likeButton">Like</button>
+                </li>
+                {{/each}}
+            </ul>
+        </div>
+
+    </div>
+    <ul id="pageData" style="display:none;">
+        <li id="postId">{{id}}</li>
+        <ul />
+
+
 </div>
+<script src="/js/postComment.js"></script>
