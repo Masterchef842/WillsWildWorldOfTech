@@ -32,9 +32,21 @@ const changeEditDisplay=(event)=>{
     event.target.parentElement.children[0].children[0].addEventListener("submit", editSubmit)
 
 }
-
+const deletePost= async (event)=>{
+    const id = event.target.value
+    const result = await fetch(`/api/blogs/${id}`,{
+        method: 'DELETE',
+        body: JSON.stringify({id}),
+        headers: { 'Content-Type': 'application/json' },
+      })
+      document.location.replace('/dashboard')
+}
 
 const editButtons = document.querySelectorAll(".editPost")
 editButtons.forEach((button) => {
     button.addEventListener("click", changeEditDisplay)
+})
+const deleteButtons=document.querySelectorAll(".deletePost")
+deleteButtons.forEach((button) => {
+    button.addEventListener("click", deletePost)
 })
